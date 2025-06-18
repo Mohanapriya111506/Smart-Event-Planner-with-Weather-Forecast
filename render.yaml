@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: smart-event-planner
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: OPENWEATHER_API_KEY
+        value: 1a6b02cacdb153159a4e82b8e8f8a3c7 

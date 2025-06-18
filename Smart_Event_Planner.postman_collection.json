@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "smart-event-planner-collection",
+		"name": "Smart Event Planner API",
+		"description": "Complete Postman collection for testing the Smart Event Planner Flask API with weather integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/health",
+					"host": ["{{base_url}}"],
+					"path": ["api", "health"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Events",
+			"item": [
+				{
+					"name": "Create Sports Event - Mumbai",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cricket Match in Mumbai\",\n    \"event_type\": \"sports\",\n    \"location\": \"Mumbai, India\",\n    \"date\": \"2024-03-16\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Formal Event - Goa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Beach Wedding in Goa\",\n    \"event_type\": \"formal\",\n    \"location\": \"Goa, India\",\n    \"date\": \"2024-12-10\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Adventure Event - Lonavala",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hiking Trip to Lonavala\",\n    \"event_type\": \"adventure\",\n    \"location\": \"Lonavala, India\",\n    \"date\": \"2024-10-20\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Picnic Event - Delhi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Family Picnic in Delhi\",\n    \"event_type\": \"picnic\",\n    \"location\": \"Delhi, India\",\n    \"date\": \"2024-05-15\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sports Event - Bangalore",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Football Tournament\",\n    \"event_type\": \"sports\",\n    \"location\": \"Bangalore, India\",\n    \"date\": \"2024-06-20\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List Events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/events",
+					"host": ["{{base_url}}"],
+					"path": ["api", "events"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Event",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Cricket Match in Mumbai\",\n    \"location\": \"Mumbai, Maharashtra, India\",\n    \"date\": \"2024-03-18\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/events/1",
+					"host": ["{{base_url}}"],
+					"path": ["api", "events", "1"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Event",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/events/1",
+					"host": ["{{base_url}}"],
+					"path": ["api", "events", "1"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather Check",
+			"item": [
+				{
+					"name": "Check Weather - Mumbai",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/weather/Mumbai, India/2024-03-16",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather", "Mumbai, India", "2024-03-16"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Weather - Goa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/weather/Goa, India/2024-12-10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather", "Goa, India", "2024-12-10"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Weather - Lonavala",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/weather/Lonavala, India/2024-10-20",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather", "Lonavala, India", "2024-10-20"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Weather - Invalid Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/weather/InvalidLocation, XYZ/2024-03-16",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather", "InvalidLocation, XYZ", "2024-03-16"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event Suitability",
+			"item": [
+				{
+					"name": "Check Suitability for Event 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/1/suitability",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "1", "suitability"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Suitability for Event 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/2/suitability",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "2", "suitability"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Suitability for Event 3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/3/suitability",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "3", "suitability"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alternative Dates",
+			"item": [
+				{
+					"name": "Get Alternatives for Event 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/1/alternatives",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "1", "alternatives"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Alternatives for Event 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/2/alternatives",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "2", "alternatives"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Alternatives for Event 3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/3/alternatives",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "3", "alternatives"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Error Handling Tests",
+			"item": [
+				{
+					"name": "Create Event - Missing Fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Incomplete Event\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Non-existent Event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Non-existent Event\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/events/999",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "999"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Non-existent Event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/events/999",
+							"host": ["{{base_url}}"],
+							"path": ["api", "events", "999"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Weather Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/weather/NonExistentCity, InvalidCountry/2024-03-16",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather", "NonExistentCity, InvalidCountry", "2024-03-16"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Basic response validation",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Response time is less than 5000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+					"});",
+					"",
+					"pm.test(\"Response has required headers\", function () {",
+					"    pm.response.to.have.header(\"Content-Type\");",
+					"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+} 
