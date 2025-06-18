@@ -331,7 +331,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For support and questions:
 - Create an issue on GitHub
-- Check the troubleshooting section
+- Email on - shahsaumya1712@gmail.com
+- Message on Linkedin - [Saumya Shah](www.linkedin.com/in/saumya-shah-9b2579273)
 - Review the API documentation
 
 ---
