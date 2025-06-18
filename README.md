@@ -2,6 +2,13 @@
 
 A Flask-based backend service that helps users plan outdoor events by integrating with the OpenWeatherMap API to provide intelligent weather-based recommendations.
 
+## 🚀 **Live Demo & Testing**
+
+- **🌐 Live Application**: [https://smart-event-planner-with-weather-forecast.onrender.com](https://smart-event-planner-with-weather-forecast.onrender.com)
+- **📋 Postman Collection**: [https://saumyashah-2944455.postman.co/workspace/Saumya-Shah's-Workspace~3d5e8912-f271-4dfc-8ce9-b75e04ce756c/collection/45964758-512e637a-1937-4367-8066-6147556a7ffa?action=share&creator=45964758](https://saumyashah-2944455.postman.co/workspace/Saumya-Shah's-Workspace~3d5e8912-f271-4dfc-8ce9-b75e04ce756c/collection/45964758-512e637a-1937-4367-8066-6147556a7ffa?action=share&creator=45964758)
+
+**🎯 Ready to test?** Import the Postman collection and start exploring the API endpoints with real weather data!
+
 ## 🚀 Features
 
 - **Weather API Integration**: Real-time weather data from OpenWeatherMap
