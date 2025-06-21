@@ -1,340 +1,171 @@
-# Smart Event Planner 🌤️
+# 🌤️ Smart Event Planner with Weather Forecast
 
-A Flask-based backend service that helps users plan outdoor events by integrating with the OpenWeatherMap API to provide intelligent weather-based recommendations.
+Welcome to the **Smart Event Planner**! This intelligent web application helps you plan outdoor events by providing weather-based recommendations. Built with Flask, it integrates real-time weather data from OpenWeatherMap to ensure your events are enjoyable and well-timed.
 
-## 🚀 **Live Demo & Testing**
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-blue?style=for-the-badge&logo=github)](https://github.com/Mohanapriya111506/Smart-Event-Planner-with-Weather-Forecast/releases)
 
-- **🌐 Live Application**: [https://smart-event-planner-with-weather-forecast.onrender.com](https://smart-event-planner-with-weather-forecast.onrender.com)
-- **📋 Postman Collection**: [https://saumyashah-2944455.postman.co/workspace/Saumya-Shah's-Workspace~3d5e8912-f271-4dfc-8ce9-b75e04ce756c/collection/45964758-512e637a-1937-4367-8066-6147556a7ffa?action=share&creator=45964758](https://saumyashah-2944455.postman.co/workspace/Saumya-Shah's-Workspace~3d5e8912-f271-4dfc-8ce9-b75e04ce756c/collection/45964758-512e637a-1937-4367-8066-6147556a7ffa?action=share&creator=45964758)
+## Table of Contents
 
-**🎯 Ready to test?** Import the Postman collection and start exploring the API endpoints with real weather data!
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Event Types](#event-types)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## 🚀 Features
+## Features
 
-- **Weather API Integration**: Real-time weather data from OpenWeatherMap
-- **Event Management**: Create, update, delete, and manage outdoor events
-- **Advanced Weather Analysis**: Intelligent weather suitability scoring with detailed breakdowns
-- **Alternative Suggestions**: Get better date recommendations
-- **Beautiful UI**: Modern, responsive web interface
-- **In-Memory Storage**: No database required, uses Python dictionaries
-- **Weather Caching**: 6-hour cache for weather data
-- **Event-Type Specific Logic**: Different weather preferences for different event categories
-- **Proper Weather Formatting**: Temperature in °C, wind speed in km/h, precipitation in mm with 1 decimal precision
+- **Weather-Based Recommendations**: Get intelligent suggestions based on current weather conditions.
+- **Real-Time Data**: Integrates with OpenWeatherMap for up-to-date weather information.
+- **Event Scoring**: Advanced algorithms evaluate the best options for four event types:
+  - Sports
+  - Formal
+  - Adventure
+  - Picnic
+- **User-Friendly Interface**: Built with Bootstrap for a responsive and clean design.
+- **RESTful API**: Access the functionality through a straightforward API.
 
-## 🏗️ Architecture
+## Technologies Used
 
-- **Backend**: Flask (Python)
-- **Frontend**: HTML5, CSS3, JavaScript (Bootstrap 5)
-- **Weather API**: OpenWeatherMap
-- **Storage**: In-memory Python dictionaries
-- **Deployment**: Render.com ready
+- **Flask**: A lightweight web framework for Python.
+- **OpenWeatherMap API**: Provides weather data.
+- **Bootstrap**: For responsive design.
+- **Python 3**: The programming language used.
+- **REST API**: To interact with the application.
 
-## 📋 Prerequisites
+## Installation
 
-- Python 3.8+
-- OpenWeatherMap API key
-- Git
+To set up the Smart Event Planner on your local machine, follow these steps:
 
-## 🛠️ Installation & Setup
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Mohanapriya111506/Smart-Event-Planner-with-Weather-Forecast.git
+   ```
 
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd smart-event-planner
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd Smart-Event-Planner-with-Weather-Forecast
+   ```
+
+3. **Install Dependencies**:
+   Make sure you have Python 3 installed. Then, run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set Up Environment Variables**:
+   You need to create a `.env` file to store your OpenWeatherMap API key. Use the following format:
+   ```
+   OPENWEATHER_API_KEY=your_api_key_here
+   ```
+
+5. **Run the Application**:
+   Start the Flask server:
+   ```bash
+   python app.py
+   ```
+
+6. **Access the Application**:
+   Open your web browser and go to `http://127.0.0.1:5000`.
+
+## Usage
+
+Once the application is running, you can start planning your events. Here’s how:
+
+1. **Select Event Type**: Choose from Sports, Formal, Adventure, or Picnic.
+2. **Input Location**: Enter the location for your event.
+3. **Check Weather**: The app will fetch real-time weather data.
+4. **Get Recommendations**: Based on the weather, receive tailored suggestions.
+
+For more detailed instructions, check the API documentation.
+
+## API Documentation
+
+The Smart Event Planner provides a RESTful API for developers. Here are the main endpoints:
+
+### Get Weather Data
+
+- **Endpoint**: `/api/weather`
+- **Method**: GET
+- **Parameters**:
+  - `location`: The location for which to fetch weather data.
+  
+**Example Request**:
+```http
+GET /api/weather?location=New%20York
 ```
 
-### 2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
+### Get Event Recommendations
 
-### 3. Set Environment Variables
-Create a `.env` file in the root directory:
-```env
-OPENWEATHER_API_KEY=your_api_key_here
-```
+- **Endpoint**: `/api/recommendations`
+- **Method**: POST
+- **Body**:
+  - `event_type`: The type of event (Sports, Formal, Adventure, Picnic).
+  - `location`: The location for the event.
 
-### 4. Run the Application
-```bash
-python app.py
-```
+**Example Request**:
+```http
+POST /api/recommendations
+Content-Type: application/json
 
-The application will be available at `http://localhost:8000`
-
-## 🌐 API Endpoints
-
-### Health Check
-- **GET** `/api/health` - Check application status
-
-### Event Management
-- **POST** `/api/events` - Create a new event
-- **GET** `/api/events` - List all events with weather info and suitability scores
-- **PUT** `/api/events/:id` - Update an event
-- **DELETE** `/api/events/:id` - Delete an event
-
-### Weather Services
-- **GET** `/api/weather/:location/:date` - Get weather for location and date
-- **GET** `/api/events/:id/suitability` - Get detailed weather suitability score
-- **GET** `/api/events/:id/alternatives` - Get alternative date suggestions
-
-## 📝 API Examples
-
-### Create an Event
-```bash
-curl -X POST http://localhost:8000/api/events \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Cricket Match in Mumbai",
-    "event_type": "sports",
-    "location": "Mumbai, India",
-    "date": "2024-03-16"
-  }'
-```
-
-### Check Weather
-```bash
-curl -X GET "http://localhost:8000/api/weather/Mumbai, India/2024-03-16"
-```
-
-### Get Event Suitability
-```bash
-curl -X GET http://localhost:8000/api/events/1/suitability
-```
-
-### Delete an Event
-```bash
-curl -X DELETE http://localhost:8000/api/events/1
-```
-
-## 🎯 Event Types & Weather Scoring Algorithms
-
-The application uses sophisticated weather scoring algorithms designed for each event type:
-
-### 1. Sports Event (Cricket, Soccer, etc.)
-**Key Factors**: Temperature, precipitation, wind, weather conditions
-
-| Factor | Ideal Range | Acceptable Range | Max Points | Acceptable Points |
-|--------|-------------|------------------|------------|-------------------|
-| Temperature | 18-28°C | 15-32°C | 30 pts | 15 pts |
-| Precipitation | 0-10% chance | 11-30% chance | 30 pts | 15 pts |
-| Wind | <15 km/h | 15-25 km/h | 25 pts | 12 pts |
-| Conditions | Clear/Partly cloudy | Overcast | 15 pts | 10 pts |
-
-### 2. Formal Event (Wedding, Corporate Gathering)
-**Key Factors**: Precipitation, temperature, humidity, wind
-
-| Factor | Ideal Range | Acceptable Range | Max Points | Acceptable Points |
-|--------|-------------|------------------|------------|-------------------|
-| Precipitation | 0% chance | 1-10% chance | 40 pts | 20 pts |
-| Temperature | 20-26°C | 18-29°C | 30 pts | 15 pts |
-| Humidity | 40-60% | 30-70% | 20 pts | 10 pts |
-| Wind | <10 km/h | 10-15 km/h | 10 pts | 5 pts |
-
-### 3. Outdoor Adventure (Hiking, Trekking)
-**Key Factors**: Temperature range, precipitation, visibility, wind
-
-| Factor | Ideal Range | Acceptable Range | Max Points | Acceptable Points |
-|--------|-------------|------------------|------------|-------------------|
-| Temperature | 10-25°C | 5-30°C | 30 pts | 15 pts |
-| Precipitation | 0-15% chance | 16-30% chance | 25 pts | 12 pts |
-| Visibility | ≥10 km | 5-10 km | 25 pts | 15 pts |
-| Wind | 5-20 km/h | 0-30 km/h | 20 pts | 10 pts |
-
-### 4. Family/Friends Picnic
-**Key Factors**: Comfort index, precipitation, UV index, wind
-
-| Factor | Ideal Range | Acceptable Range | Max Points | Acceptable Points |
-|--------|-------------|------------------|------------|-------------------|
-| Comfort | 18-27°C | 15-30°C | 40 pts | 25 pts |
-| Precipitation | 0% chance | 1-15% chance | 30 pts | 15 pts |
-| UV Index | 0-3 (Low) | 4-6 (Moderate) | 20 pts | 15 pts |
-| Wind | 5-15 km/h | 0-20 km/h | 10 pts | 5 pts |
-
-### Suitability Classification
-- **Good**: 85-100 points (Ideal conditions)
-- **Okay**: 65-84 points (Acceptable with minor compromises)
-- **Poor**: <65 points (Significant weather challenges)
-
-## 🧪 Testing with Postman
-
-1. Import the `Smart_Event_Planner.postman_collection.json` file into Postman
-2. Set the `base_url` variable to your application URL
-3. Run the test scenarios:
-
-### Test Scenarios Included:
-- ✅ Create events (Sports, Formal, Adventure, Picnic)
-- ✅ List all events with suitability scores
-- ✅ Update event details
-- ✅ Delete events
-- ✅ Weather checks for different locations
-- ✅ Detailed suitability scoring
-- ✅ Alternative date suggestions
-- ✅ Error handling (invalid locations, missing fields, non-existent events)
-
-## 🚀 Deployment to Render.com
-
-### Option 1: Using render.yaml (Recommended)
-1. Push your code to a Git repository
-2. Connect your repository to Render.com
-3. Render will automatically detect the `render.yaml` file and deploy
-
-### Option 2: Manual Deployment
-1. Create a new Web Service on Render.com
-2. Connect your Git repository
-3. Set build command: `pip install -r requirements.txt`
-4. Set start command: `gunicorn app:app`
-5. Add environment variable: `OPENWEATHER_API_KEY=your_api_key`
-
-### Environment Variables for Production
-- `OPENWEATHER_API_KEY`: Your OpenWeatherMap API key
-- `PORT`: Automatically set by Render
-
-## 🎨 UI Features
-
-- **Responsive Design**: Works on desktop, tablet, and mobile
-- **Modern Interface**: Bootstrap 5 with custom styling
-- **Real-time Updates**: Dynamic weather data display
-- **Interactive Cards**: Hover effects and animations
-- **Loading States**: User feedback during API calls
-- **Error Handling**: User-friendly error messages
-- **Delete Confirmation**: Modal confirmation for event deletion
-- **Suitability Visualization**: Progress bars and color-coded ratings
-
-## 🔧 Configuration
-
-### Weather Cache Settings
-- Cache duration: 6 hours
-- Cache key format: `{location}_{date}`
-
-### API Rate Limiting
-- OpenWeatherMap free tier: 1000 calls/day
-- Implemented caching to reduce API calls
-
-## 📊 Advanced Suitability Scoring
-
-The application uses a sophisticated scoring system with detailed breakdowns:
-
-### Scoring Components:
-1. **Temperature Score** (varies by event type)
-   - Optimal range: Full points
-   - Acceptable range: 70% of points
-   - Outside range: 30% of points
-
-2. **Wind Score** (varies by event type)
-   - Below max: Full points
-   - Below 1.5x max: 60% of points
-   - Above 1.5x max: 20% of points
-
-3. **Precipitation Score** (varies by event type)
-   - Below max: Full points
-   - Below 2x max: 50% of points
-   - Above 2x max: 10% of points
-
-4. **Description Score** (varies by event type)
-   - Preferred keywords: Full points
-   - Cloudy: 70% of points
-   - Other: 30% of points
-
-### Rating System:
-- **Excellent**: 80%+ of max score
-- **Good**: 60-79% of max score
-- **Okay**: 40-59% of max score
-- **Poor**: Below 40% of max score
-
-### Detailed Response Format:
-```json
 {
-  "suitability": {
-    "score": 85,
-    "max_score": 100,
-    "percentage": 85.0,
-    "rating": "Excellent",
-    "details": {
-      "temperature": {
-        "value": 22,
-        "points": 30,
-        "status": "Optimal"
-      },
-      "wind": {
-        "value": 12,
-        "points": 20,
-        "status": "Good"
-      },
-      "precipitation": {
-        "value": 0.05,
-        "points": 25,
-        "status": "Good"
-      },
-      "description": {
-        "value": "clear sky",
-        "points": 10,
-        "status": "Good"
-      }
-    }
-  }
+  "event_type": "Picnic",
+  "location": "Central Park"
 }
 ```
 
-## 🐛 Troubleshooting
+## Event Types
 
-### Common Issues
+### Sports
 
-1. **Weather API Errors**
-   - Check your API key is valid
-   - Verify location names are correct
-   - Check API rate limits
+Ideal for outdoor activities. The app considers factors like temperature and precipitation.
 
-2. **Application Won't Start**
-   - Ensure all dependencies are installed
-   - Check Python version (3.8+)
-   - Verify environment variables
+### Formal
 
-3. **Weather Data Not Loading**
-   - Check internet connection
-   - Verify OpenWeatherMap API is accessible
-   - Check browser console for errors
+Perfect for events like weddings or corporate gatherings. Recommendations focus on elegance and comfort.
 
-### Debug Mode
-Run with debug enabled:
-```bash
-export FLASK_ENV=development
-python app.py
-```
+### Adventure
 
-## 📈 Performance
+For thrill-seekers, this category looks at weather conditions suitable for hiking, climbing, and more.
 
-- **Response Time**: < 2 seconds for weather API calls
-- **Cache Hit Rate**: ~80% with 6-hour cache
-- **Memory Usage**: Minimal (in-memory storage)
-- **Scalability**: Horizontal scaling ready
+### Picnic
 
-## 🤝 Contributing
+The app suggests the best days for a picnic, considering factors like wind speed and rain.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+## Contributing
 
-## 📄 License
+We welcome contributions! If you want to help improve the Smart Event Planner, follow these steps:
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. **Fork the Repository**: Click the "Fork" button at the top right of this page.
+2. **Create a Branch**: Use a descriptive name for your branch.
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make Changes**: Implement your feature or fix a bug.
+4. **Commit Your Changes**:
+   ```bash
+   git commit -m "Add a feature"
+   ```
+5. **Push to Your Branch**:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Create a Pull Request**: Submit your changes for review.
 
-## 🙏 Acknowledgments
+## License
 
-- OpenWeatherMap for weather data
-- Bootstrap for UI framework
-- Font Awesome for icons
-- Flask community for the excellent framework
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 📞 Support
+## Contact
 
-For support and questions:
-- Create an issue on GitHub
-- Email on - shahsaumya1712@gmail.com
-- Message on Linkedin - [Saumya Shah](www.linkedin.com/in/saumya-shah-9b2579273)
-- Review the API documentation
+For any inquiries or suggestions, feel free to reach out:
 
----
+- **Email**: your.email@example.com
+- **GitHub**: [Mohanapriya111506](https://github.com/Mohanapriya111506)
 
-**Happy Event Planning! 🌟** 
+Explore the [Releases](https://github.com/Mohanapriya111506/Smart-Event-Planner-with-Weather-Forecast/releases) section for updates and downloads.
+
+Thank you for checking out the Smart Event Planner! We hope it helps you plan your perfect outdoor events.
